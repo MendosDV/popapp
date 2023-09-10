@@ -143,6 +143,7 @@ input {
   display: none;
   margin-top: 21vh;
   border-radius: 8px;
+  z-index: 10;
 }
 
 .genre-options li {
@@ -178,6 +179,12 @@ input {
   color: rgb(50, 99, 170);
   background-color: #172132;
   cursor: pointer;
+}
+
+.selected-hover {
+  transition: 0.4s;
+  color: rgb(50, 99, 170);
+  background-color: #172132;
 }
 
 .list-movies {
@@ -219,6 +226,7 @@ input {
   padding: 6px;
   opacity: 0;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .card-movie:hover img {

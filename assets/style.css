@@ -1,0 +1,269 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+body {
+  background-color: #14181F;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6em;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+header {
+  padding : 40px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#title {
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.links-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 18px;
+  font-size: 14px;
+}
+
+.links-menu p {
+  cursor: pointer;
+  padding-bottom: 6px;
+}
+
+.links-menu p:hover {
+  border-bottom: solid 2px rgb(50, 99, 170);
+  transition: 0.2s;
+}
+
+:focus {
+  outline: none;
+}
+
+input {
+  background-color: #172132;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 20px;
+}
+
+.search-input {
+  position: relative;
+}
+
+#search-icon {
+  width: 16px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 80%;
+}
+
+#search-icon:hover {
+  cursor: pointer;
+}
+
+.banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.166), rgba(0, 0, 0, 0.5)), url("https://thumb.canalplus.pro/http/unsafe/1440x810/filters:quality(80)/img-hapi.canalplus.pro:80/ServiceImage/ImageID/107730289");
+  width: 100%;
+  border-radius: 30px;
+  height: 50vh;
+  background-size: cover; /* Pour que l'image de fond couvre toute la zone */
+  background-position: center;
+  transition: 0.2s;
+  margin-bottom: 4vh;
+}
+
+.details-banner {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 20px;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.banner-content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 32vh;
+  padding-left: 6vw;
+}
+
+.filters {
+  border-radius: 30px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #172132;
+  padding: 18px 32px;
+  margin-bottom: 4vh;
+}
+
+.genres-years {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter:hover {
+  cursor: pointer;
+}
+
+.genre-options {
+  display: none;
+  margin-top: 21vh;
+  border-radius: 8px;
+}
+
+.genre-options li {
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+
+.filter:hover .genre-options {
+  display: block;
+  background-color: #14181F;
+  padding: 16px;
+  position: absolute;
+}
+
+.other-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color:  #14181F;
+  padding: 12px 18px;
+  border-radius: 30px;
+}
+
+.selected {
+  padding: 8px;
+  border-radius: 30px;
+  transition: 1.5s;
+}
+
+.selected:hover {
+  transition: 0.4s;
+  color: rgb(50, 99, 170);
+  background-color: #172132;
+  cursor: pointer;
+}
+
+.list-movies {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+}
+
+.card-movie {
+  border-radius: 8px;
+  margin-bottom: 16px;
+  transition: 0.2s;
+  position: relative;
+}
+
+.card-movie img {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: filter 0.3s ease;
+}
+
+.play-button {
+  opacity: 0;
+  font-size: 28px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bookmark {
+  position: absolute;
+  font-size: 24px;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+  padding: 6px;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.card-movie:hover img {
+  filter: blur(2px);
+}
+
+.card-movie:hover {
+  transform: scale(1.02);
+  transition: 0.2s;
+}
+
+.card-movie:hover .bookmark {
+  opacity: 1;
+  transition: 0.4s;
+}
+
+.card-movie:hover .play-button {
+  opacity: 1;
+  transition: 0.4s;
+}
+
+.movie-title {
+  margin-bottom: 4px;
+}
+
+.movie-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.movie-date {
+  color: rgb(50, 99, 170);
+  font-weight: 500;
+}
+
+.movie-mark {
+  border: solid 1px rgb(50, 99, 170);
+  color: rgb(50, 99, 170);
+  font-weight: 700;
+  width: 28px;
+  height: 28px;
+  text-align: center;
+  padding: 6px;
+  border-radius: 50%;
+}

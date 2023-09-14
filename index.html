@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/main.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Popapp</title>
   </head>
@@ -77,189 +78,12 @@
         </div>
       </div>
 
-      <div class="list-movies">
-      </div>
+      <div class="list-movies"></div>
+      <div id="next-page">See more</div>
 
       <footer>
+        <p id="footer">© 2023 PopApp All Rights Reserved</p>
       </footer>
-
-      <script>
-
-        document.addEventListener('DOMContentLoaded', function () {
-          const topRated = document.getElementById('top-rated');
-          topRated.classList.add('selected-hover');
-          topRatedMovie();
-        });
-
-        const search = document.querySelector('#search-icon');
-        const movie = document.getElementById("search");
-        let query = 'The Place Beyond the Pines';
-        const apiKey = '';
-        let pathPoster = "https://image.tmdb.org/t/p/original";
-
-        // FILTERS
-        const topRated = document.querySelector('#top-rated');
-        const popular = document.querySelector('#popular');
-        const upcoming = document.querySelector('#upcoming');
-        const listMovies = document.querySelector('.list-movies');
-
-        function createCard (element) {
-          const dateDivise = element.release_date.split('-');
-          const year = dateDivise[0];
-
-          const card = document.createElement('div');
-          card.classList.add('card-movie');
-
-          const img = document.createElement('img');
-          img.src = pathPoster + element.poster_path;
-          img.alt = element.title;
-          img.classList.add('poster');
-
-          const bookmarkIcon = document.createElement('i');
-          bookmarkIcon.className = 'bookmark fa-regular fa-bookmark fa-bounce';
-          bookmarkIcon.style.color = 'rgb(50, 99, 170)';
-
-          const playButtonIcon = document.createElement('i');
-          playButtonIcon.className = 'play-button fa-regular fa-circle-play';
-          playButtonIcon.style.color = '#595d64';
-
-          const movieTitle = document.createElement('p');
-          movieTitle.classList.add('movie-title');
-          movieTitle.innerText = element.title;
-
-          const movieDetails = document.createElement('div');
-          movieDetails.classList.add('movie-details');
-
-          const movieDate = document.createElement('p');
-          movieDate.classList.add('movie-date');
-          movieDate.innerText = year;
-
-          const movieMark = document.createElement('p');
-          movieMark.classList.add('movie-mark');
-          movieMark.innerText = Math.round(element.vote_average);
-
-          document.querySelector('.list-movies').appendChild(card);
-          card.appendChild(img);
-          card.appendChild(bookmarkIcon);
-          card.appendChild(playButtonIcon);
-          card.appendChild(movieTitle);
-          card.appendChild(movieDetails);
-          movieDetails.appendChild(movieDate);
-          movieDetails.appendChild(movieMark);
-
-          return card;
-        }
-
-        // TOP RATED
-        async function topRatedMovie() {
-          const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
-          const response = await fetch(url);
-          const data = await response.json();
-          const results = data.results
-
-          results.forEach(element => {
-            const card = createCard(element);
-            listMovies.appendChild(card);
-          });
-        }
-
-        topRated.addEventListener('click', () => {
-          listMovies.innerHTML = '';
-          topRated.classList.toggle('selected-hover');
-          popular.classList.remove('selected-hover');
-          upcoming.classList.remove('selected-hover');
-
-          topRatedMovie();
-        });
-
-        //POPULAR
-        async function popularMovie() {
-          const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
-          const response = await fetch(url);
-          const data = await response.json();
-          const results = data.results
-
-          results.forEach(element => {
-            const card = createCard(element);
-            listMovies.appendChild(card);
-          });
-        }
-
-        popular.addEventListener('click', () => {
-          listMovies.innerHTML = '';
-          popular.classList.toggle('selected-hover');
-          topRated.classList.remove('selected-hover');
-          upcoming.classList.remove('selected-hover');
-
-          popularMovie();
-        });
-
-        //UPCOMING
-        async function upcomingMovie() {
-          const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
-          const response = await fetch(url);
-          const data = await response.json();
-          const results = data.results
-
-          results.forEach(element => {
-            const card = createCard(element);
-            listMovies.appendChild(card);
-          });
-        }
-
-        upcoming.addEventListener('click', () => {
-          listMovies.innerHTML = '';
-          upcoming.classList.toggle('selected-hover');
-          topRated.classList.remove('selected-hover');
-          popular.classList.remove('selected-hover');
-
-          upcomingMovie();
-        });
-
-        // SEARCH MOVIE
-        async function searchMovie(query) {
-          const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
-          const response = await fetch(url);
-          const data = await response.json();
-          const results = data.results;
-          console.log(data.results);
-
-          results.forEach(element => {
-            const card = createCard(element);
-            listMovies.appendChild(card);
-          });
-        }
-
-        search.addEventListener('click', () => {
-          listMovies.innerHTML = '';
-          query = movie.value;
-          searchMovie(query);
-        });
-
-        // Possible de le faire aussi à chaque Keyup
-        movie.addEventListener('keyup', () => {
-          listMovies.innerHTML = '';
-          query = movie.value;
-          searchMovie(query);
-          console.log(query);
-        });
-
-        //BOOKMARK
-        function changeBookmark(bookmark) {
-          bookmark.classList.toggle('fa-regular');
-          bookmark.classList.toggle('fa-solid');
-          bookmark.classList.toggle('fa-bounce');
-        }
-
-        document.addEventListener('click', (event) => {
-          if (event.target.classList.contains('bookmark')) {
-            const bookmark = event.target;
-            console.log(bookmark);
-            changeBookmark(bookmark);
-          }
-        })
-
-      </script>
     </div>
   </body>
 </html>

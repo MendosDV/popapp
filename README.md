@@ -1,4 +1,4 @@
-🍿 Popapp
+🍿 CineApp
 
 Ce projet est une petite application web permettant aux utilisateurs de découvrir des films en fonction de différentes catégories telles que les films les mieux notés, les plus populaires et les prochaines sorties. L'application utilise l'API de The Movie Database (TMDb) pour récupérer les informations sur les films.
 

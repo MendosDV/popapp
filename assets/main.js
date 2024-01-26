@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const search = document.querySelector('#search-icon');
 const movie = document.getElementById("search");
 let query = 'The Place Beyond the Pines';
-const apiKey = '';
+const apiKey = '5d08cdcb6f4d391e26ef46ee466716fa';
 let pathPoster = "https://image.tmdb.org/t/p/original";
 
 // FILTERS
